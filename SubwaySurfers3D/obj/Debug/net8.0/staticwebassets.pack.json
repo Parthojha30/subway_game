@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Shard\\Downloads\\Dotnet\\SubwaySurfers3D\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Shard\\Downloads\\Dotnet\\SubwaySurfers3D\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Shard\\Downloads\\Dotnet\\SubwaySurfers3D\\wwwroot\\js\\api.js",
+      "PackagePath": "staticwebassets\\js\\api.js"
+    },
+    {
+      "Id": "C:\\Users\\Shard\\Downloads\\Dotnet\\SubwaySurfers3D\\wwwroot\\js\\game.js",
+      "PackagePath": "staticwebassets\\js\\game.js"
+    },
+    {
+      "Id": "C:\\Users\\Shard\\Downloads\\Dotnet\\SubwaySurfers3D\\wwwroot\\js\\sound.js",
+      "PackagePath": "staticwebassets\\js\\sound.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SubwaySurfers3D.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SubwaySurfers3D.props",
+      "PackagePath": "build\\SubwaySurfers3D.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SubwaySurfers3D.props",
+      "PackagePath": "buildMultiTargeting\\SubwaySurfers3D.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SubwaySurfers3D.props",
+      "PackagePath": "buildTransitive\\SubwaySurfers3D.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
