@@ -1,23 +1,31 @@
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SubwaySurfers3D.Data;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure SQLite Database
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection") 
-                      ?? "Data Source=SubwaySurfers.db"));
+// Use a writable directory on Azure App Service.
+var homeDirectory = Environment.GetEnvironmentVariable("HOME");
 
-// Enable CORS for development flexibility
+var dataDirectory = !string.IsNullOrEmpty(homeDirectory)
+    ? Path.Combine(homeDirectory, "data")
+    : builder.Environment.ContentRootPath;
+
+Directory.CreateDirectory(dataDirectory);
+
+var databasePath = Path.Combine(dataDirectory, "SubwaySurfers.db");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite($"Data Source={databasePath}"));
+
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -30,14 +38,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Ensure Database is Created & Seeded on Startup
+// Create database
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -46,20 +53,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowAll");
 
-// Serve Default & Static Files from wwwroot
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseAuthorization();
 app.MapControllers();
 
-// Fallback to index.html for SPA routing
 app.MapFallbackToFile("index.html");
-
-Console.WriteLine("=================================================");
-Console.WriteLine(" 3D Subway Surfers Web API & Server Started!");
-Console.WriteLine(" Database: SQLite (SubwaySurfers.db)");
-Console.WriteLine(" Web Interface: http://localhost:5000");
-Console.WriteLine("=================================================");
 
 app.Run();
