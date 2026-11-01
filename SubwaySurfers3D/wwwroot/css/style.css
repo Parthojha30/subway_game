@@ -95,12 +95,12 @@ body, html {
     gap: 12px;
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 1.9rem;
+    font-size: 2.3rem;
     letter-spacing: 1px;
 }
 
 .brand-icon {
-    font-size: 1.8rem;
+    font-size: 2.15rem;
     color: var(--accent-red);
     filter: drop-shadow(0 0 8px var(--accent-red));
 }
@@ -113,7 +113,7 @@ body, html {
     background: linear-gradient(135deg, #68217a, #0078d4);
     padding: 4px 10px;
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-family: var(--font-primary);
     font-weight: 700;
     text-transform: uppercase;
@@ -134,7 +134,7 @@ body, html {
     padding: 8px 16px;
     border-radius: 30px;
     font-weight: 700;
-    font-size: 1.15rem;
+    font-size: 1.4rem;
 }
 
 .gold { color: var(--accent-gold); }
@@ -215,14 +215,14 @@ body, html {
     border: 1px solid var(--accent-red);
     padding: 4px 14px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.96rem;
     font-weight: 800;
     letter-spacing: 2px;
 }
 
 .game-title {
     font-family: var(--font-display);
-    font-size: 3.5rem;
+    font-size: 4.2rem;
     font-weight: 900;
     line-height: 1;
     background: linear-gradient(135deg, #fff, var(--accent-gold));
@@ -233,7 +233,7 @@ body, html {
 
 .game-subtitle {
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.32rem;
 }
 
 .character-preview-box {
@@ -254,7 +254,7 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
 }
 
@@ -264,11 +264,11 @@ body, html {
 
 .char-name {
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1.32rem;
 }
 
 .board-name {
-    font-size: 0.85rem;
+    font-size: 1.02rem;
     color: var(--accent-cyan);
 }
 
@@ -301,13 +301,13 @@ body, html {
 .btn-giant {
     width: 100%;
     padding: 18px 24px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: 1px;
 }
 
 .btn-large {
     padding: 14px 24px;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 
 .btn-glass {
@@ -315,7 +315,7 @@ body, html {
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: var(--text-main);
     padding: 12px;
-    font-size: 1.05rem;
+    font-size: 1.26rem;
 }
 
 .btn-glass:hover {
@@ -335,7 +335,7 @@ body, html {
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    font-size: 0.95rem;
+    font-size: 1.14rem;
     color: var(--text-muted);
     margin-top: 10px;
 }
@@ -371,7 +371,7 @@ kbd {
 }
 
 .hud-stat .label {
-    font-size: 0.85rem;
+    font-size: 1.02rem;
     color: var(--text-muted);
     font-weight: 700;
     letter-spacing: 1px;
@@ -379,7 +379,7 @@ kbd {
 
 .hud-stat .val {
     font-family: var(--font-retro);
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: #fff;
     margin-top: 4px;
 }
@@ -389,7 +389,7 @@ kbd {
     color: #000;
     font-family: var(--font-display);
     font-weight: 900;
-    font-size: 2.2rem;
+    font-size: 2.65rem;
     padding: 8px 18px;
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(255, 165, 2, 0.5);
@@ -420,7 +420,7 @@ kbd {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.9rem;
+    font-size: 1.08rem;
     font-weight: 800;
 }
 
@@ -453,7 +453,7 @@ kbd {
     padding: 14px 24px;
     border-radius: 30px;
     font-weight: 900;
-    font-size: 1.15rem;
+    font-size: 1.38rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -486,7 +486,7 @@ kbd {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.44rem;
     cursor: pointer;
 }
 
@@ -510,7 +510,7 @@ kbd {
 
 .title-failed {
     font-family: var(--font-display);
-    font-size: 3.6rem;
+    font-size: 4.32rem;
     font-weight: 900;
     color: var(--accent-red);
     text-shadow: 0 0 25px rgba(255, 71, 87, 0.6);
@@ -524,7 +524,7 @@ kbd {
     font-weight: 900;
     display: inline-block;
     margin-top: 6px;
-    font-size: 0.9rem;
+    font-size: 1.08rem;
 }
 
 .results-grid {
@@ -541,14 +541,14 @@ kbd {
 }
 
 .res-label {
-    font-size: 0.85rem;
+    font-size: 1.02rem;
     color: var(--text-muted);
     font-weight: 700;
 }
 
 .res-val {
     display: block;
-    font-size: 1.45rem;
+    font-size: 1.74rem;
     font-weight: 800;
     margin-top: 4px;
 }
@@ -608,7 +608,7 @@ kbd {
 
 .modal-header h2 {
     font-family: var(--font-display);
-    font-size: 1.9rem;
+    font-size: 2.3rem;
     font-weight: 800;
     display: flex;
     align-items: center;
@@ -619,7 +619,7 @@ kbd {
     background: none;
     border: none;
     color: var(--text-muted);
-    font-size: 1.4rem;
+    font-size: 1.68rem;
     cursor: pointer;
     transition: color 0.2s ease;
 }
@@ -679,16 +679,16 @@ kbd {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: 2.15rem;
 }
 
 .shop-card-title {
     font-weight: 800;
-    font-size: 1.2rem;
+    font-size: 1.44rem;
 }
 
 .shop-card-desc {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: var(--text-muted);
 }
 
@@ -705,7 +705,7 @@ kbd {
 
 .leader-table th {
     padding: 12px;
-    font-size: 0.8rem;
+    font-size: 0.96rem;
     color: var(--text-muted);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -747,7 +747,7 @@ kbd {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1.68rem;
 }
 
 .ach-item.unlocked .ach-icon {
@@ -761,11 +761,11 @@ kbd {
 
 .ach-title {
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 1.38rem;
 }
 
 .ach-desc {
-    font-size: 0.8rem;
+    font-size: 0.96rem;
     color: var(--text-muted);
 }
 
