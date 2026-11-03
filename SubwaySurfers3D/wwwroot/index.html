@@ -1,100 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>METRO RUNNER 3D - Original Endless Runner</title>
-    <!-- Google Fonts & Font Awesome Icons -->
+
+    <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Press+Start+2P&family=Rajdhani:wght@600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Game Styling -->
+
+    <!-- Game CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Three.js 3D Library -->
+
+    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
 <body>
     <div id="game-container">
-        <!-- 3D WebGL Canvas -->
+
+        <!-- 3D Game Canvas -->
         <canvas id="game-canvas"></canvas>
 
-        <!-- Dynamic Glassmorphic UI Overlay -->
+        <!-- Main UI Overlay -->
         <div id="ui-overlay">
-            
-            <!-- Top Navbar Header -->
+
+            <!-- LIVE EC2 SERVER STATUS PANEL -->
+            <div id="server-status-panel" class="server-status-panel">
+
+                <div class="server-status-heading">
+                    <span>
+                        <i class="fa-solid fa-server"></i>
+                        LIVE SERVER
+                    </span>
+
+                    <span class="server-live-indicator" id="server-connection-status">
+                        ● CONNECTING
+                    </span>
+                </div>
+
+                <div class="server-status-name" id="server-name">
+                    Detecting Server...
+                </div>
+
+                <div class="server-status-detail">
+                    Instance ID:
+                    <span id="server-instance-id">Loading...</span>
+                </div>
+
+                <div class="server-status-detail">
+                    Private IP:
+                    <span id="server-private-ip">Loading...</span>
+                </div>
+
+                <div class="server-status-detail">
+                    Last Updated:
+                    <span id="server-last-updated">--</span>
+                </div>
+
+            </div>
+
+            <!-- TOP NAVIGATION -->
             <header class="top-nav">
+
                 <div class="brand">
                     <i class="fa-solid fa-city brand-icon"></i>
-                    <span class="brand-text">METRO <span class="highlight">RUNNER 3D</span></span>
+                    <span class="brand-text">
+                        METRO <span class="highlight">RUNNER 3D</span>
+                    </span>
                     <span class="net-badge">ORIGINAL EDITION</span>
                 </div>
 
                 <div class="player-bar" id="player-bar">
+
                     <div class="stat-pill coins-pill">
                         <i class="fa-solid fa-coins gold"></i>
                         <span id="player-coins">0</span>
                     </div>
+
                     <div class="stat-pill gems-pill">
                         <i class="fa-solid fa-gem cyan"></i>
                         <span id="player-gems">20</span>
                     </div>
+
                     <div class="stat-pill score-pill">
                         <i class="fa-solid fa-trophy trophy"></i>
                         <span>BEST: <strong id="player-highscore">0</strong></span>
                     </div>
+
                     <button class="profile-btn" id="btn-login-modal">
                         <i class="fa-solid fa-user-circle"></i>
                         <span id="player-name">RunnerPro</span>
                     </button>
+
                     <button class="icon-btn" id="btn-weather-toggle" title="Toggle Weather / Day Night">
                         <i class="fa-solid fa-cloud-sun"></i>
                     </button>
+
                     <button class="icon-btn" id="btn-sound-toggle" title="Toggle Sound">
                         <i class="fa-solid fa-volume-high" id="sound-icon"></i>
                     </button>
+
                 </div>
             </header>
 
-            <!-- Main Menu / Lobby Overlay -->
+            <!-- MAIN MENU / LOBBY -->
             <div id="lobby-screen" class="screen active">
+
                 <div class="lobby-card glass-panel">
+
                     <div class="hero-badge">3D ENDLESS METRO RUNNER</div>
+
                     <h1 class="game-title">CITY RUSH 3D</h1>
-                    <p class="game-subtitle">Dodge oncoming express trains, collect gold & gems, and rocket above skyscrapers!</p>
+
+                    <p class="game-subtitle">
+                        Dodge oncoming express trains, collect gold & gems,
+                        and rocket above skyscrapers!
+                    </p>
 
                     <div class="character-preview-box" id="lobby-char-box">
+
                         <div class="char-avatar-badge" id="lobby-avatar-icon">
                             <i class="fa-solid fa-user-astronaut"></i>
                         </div>
+
                         <div class="char-details">
-                            <div class="char-name" id="lobby-char-name">Alex (Metro Dash)</div>
-                            <div class="board-name" id="lobby-board-name">Board: Hover Prime</div>
+                            <div class="char-name" id="lobby-char-name">
+                                Alex (Metro Dash)
+                            </div>
+
+                            <div class="board-name" id="lobby-board-name">
+                                Board: Hover Prime
+                            </div>
                         </div>
+
                     </div>
 
                     <div class="action-row">
                         <button id="btn-start-game" class="btn btn-primary btn-giant">
-                            <i class="fa-solid fa-play"></i> START RUN
+                            <i class="fa-solid fa-play"></i>
+                            START RUN
                         </button>
                     </div>
 
                     <div class="nav-grid">
+
                         <button class="btn btn-glass" id="btn-open-shop">
                             <i class="fa-solid fa-store"></i> SHOP
                         </button>
+
                         <button class="btn btn-glass" id="btn-open-chars">
                             <i class="fa-solid fa-shirt"></i> RUNNERS
                         </button>
+
                         <button class="btn btn-glass" id="btn-open-leaderboard">
                             <i class="fa-solid fa-ranking-star"></i> RANKS
                         </button>
+
                         <button class="btn btn-glass" id="btn-open-achievements">
                             <i class="fa-solid fa-award"></i> MISSIONS
                         </button>
+
                     </div>
 
-                    <!-- Keyboard Controls Guide -->
+                    <!-- Keyboard Controls -->
                     <div class="controls-guide">
                         <span><kbd>A</kbd> / <kbd>←</kbd> Left</span>
                         <span><kbd>D</kbd> / <kbd>→</kbd> Right</span>
@@ -102,12 +176,15 @@
                         <span><kbd>S</kbd> / <kbd>↓</kbd> Roll</span>
                         <span><kbd>SPACE</kbd> Hoverboard</span>
                     </div>
+
                 </div>
             </div>
 
-            <!-- In-Game HUD -->
+            <!-- IN-GAME HUD -->
             <div id="game-hud" class="screen">
+
                 <div class="hud-top">
+
                     <div class="hud-stat score-box">
                         <div class="label">SCORE</div>
                         <div class="val" id="hud-score">000000</div>
@@ -119,99 +196,142 @@
 
                     <div class="hud-stat coins-box">
                         <div class="label">COINS & GEMS</div>
-                        <div class="val"><i class="fa-solid fa-coins gold"></i> <span id="hud-coins">0</span></div>
+                        <div class="val">
+                            <i class="fa-solid fa-coins gold"></i>
+                            <span id="hud-coins">0</span>
+                        </div>
                     </div>
+
                 </div>
 
-                <!-- Active Powerups HUD Status Bars -->
+                <!-- POWERUP STATUS -->
                 <div class="powerup-status-container" id="powerup-status">
+
                     <div class="powerup-bar-wrapper" id="pbar-magnet" style="display:none;">
                         <i class="fa-solid fa-magnet"></i>
                         <span class="pbar-name">MAGNET</span>
-                        <div class="pbar-track"><div class="pbar-fill magnet-fill" id="pbar-magnet-fill"></div></div>
+                        <div class="pbar-track">
+                            <div class="pbar-fill magnet-fill" id="pbar-magnet-fill"></div>
+                        </div>
                     </div>
 
                     <div class="powerup-bar-wrapper" id="pbar-jetpack" style="display:none;">
                         <i class="fa-solid fa-rocket"></i>
                         <span class="pbar-name">JETPACK</span>
-                        <div class="pbar-track"><div class="pbar-fill jetpack-fill" id="pbar-jetpack-fill"></div></div>
+                        <div class="pbar-track">
+                            <div class="pbar-fill jetpack-fill" id="pbar-jetpack-fill"></div>
+                        </div>
                     </div>
 
                     <div class="powerup-bar-wrapper" id="pbar-multiplier" style="display:none;">
                         <i class="fa-solid fa-star"></i>
                         <span class="pbar-name">2X SCORE</span>
-                        <div class="pbar-track"><div class="pbar-fill multiplier-fill" id="pbar-multiplier-fill"></div></div>
+                        <div class="pbar-track">
+                            <div class="pbar-fill multiplier-fill" id="pbar-multiplier-fill"></div>
+                        </div>
                     </div>
 
                     <div class="powerup-bar-wrapper" id="pbar-hoverboard" style="display:none;">
                         <i class="fa-solid fa-bolt"></i>
                         <span class="pbar-name">HOVERBOARD SHIELD</span>
-                        <div class="pbar-track"><div class="pbar-fill hoverboard-fill" id="pbar-board-fill"></div></div>
+                        <div class="pbar-track">
+                            <div class="pbar-fill hoverboard-fill" id="pbar-board-fill"></div>
+                        </div>
                     </div>
+
                 </div>
 
-                <!-- Hoverboard Quick Activate Button -->
+                <!-- HOVERBOARD BUTTON -->
                 <button class="hoverboard-trigger-btn" id="btn-trigger-board">
                     <i class="fa-solid fa-bolt"></i>
                     <span>BOARD (SPACE)</span>
                 </button>
 
-                <!-- On-Screen Touch Controls -->
+                <!-- TOUCH CONTROLS -->
                 <div class="touch-controls">
-                    <div class="touch-btn left" id="touch-left"><i class="fa-solid fa-chevron-left"></i></div>
-                    <div class="touch-col">
-                        <div class="touch-btn up" id="touch-up"><i class="fa-solid fa-chevron-up"></i></div>
-                        <div class="touch-btn down" id="touch-down"><i class="fa-solid fa-chevron-down"></i></div>
+
+                    <div class="touch-btn left" id="touch-left">
+                        <i class="fa-solid fa-chevron-left"></i>
                     </div>
-                    <div class="touch-btn right" id="touch-right"><i class="fa-solid fa-chevron-right"></i></div>
+
+                    <div class="touch-col">
+                        <div class="touch-btn up" id="touch-up">
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </div>
+
+                        <div class="touch-btn down" id="touch-down">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                    </div>
+
+                    <div class="touch-btn right" id="touch-right">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Game Over Screen -->
+            <!-- GAME OVER SCREEN -->
             <div id="gameover-screen" class="screen">
+
                 <div class="gameover-card glass-panel">
+
                     <div class="gameover-header">
                         <h2 class="title-failed">RUN OVER!</h2>
-                        <div id="highscore-tag" class="highscore-tag" style="display: none;">
+
+                        <div id="highscore-tag" class="highscore-tag" style="display:none;">
                             <i class="fa-solid fa-fire"></i> NEW HIGH SCORE!
                         </div>
                     </div>
 
                     <div class="results-grid">
+
                         <div class="res-box">
                             <span class="res-label">FINAL SCORE</span>
                             <span class="res-val" id="go-score">0</span>
                         </div>
+
                         <div class="res-box">
                             <span class="res-label">COINS EARNED</span>
                             <span class="res-val gold" id="go-coins">+0</span>
                         </div>
+
                         <div class="res-box">
                             <span class="res-label">DISTANCE</span>
                             <span class="res-val" id="go-distance">0 m</span>
                         </div>
+
                     </div>
 
                     <div id="unlocked-achievements-banner" class="ach-unlocked-banner" style="display:none;">
                     </div>
 
                     <div class="action-row">
+
                         <button id="btn-restart-game" class="btn btn-primary btn-large">
-                            <i class="fa-solid fa-rotate-right"></i> RUN AGAIN
+                            <i class="fa-solid fa-rotate-right"></i>
+                            RUN AGAIN
                         </button>
+
                         <button id="btn-return-lobby" class="btn btn-glass btn-large">
-                            <i class="fa-solid fa-house"></i> LOBBY
+                            <i class="fa-solid fa-house"></i>
+                            LOBBY
                         </button>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Shop Modal -->
+            <!-- SHOP MODAL -->
             <div id="shop-modal" class="modal">
+
                 <div class="modal-content glass-panel">
+
                     <div class="modal-header">
                         <h2><i class="fa-solid fa-store"></i> METRO SHOP & OUTFITS</h2>
-                        <button class="modal-close" id="close-shop"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="modal-close" id="close-shop">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
 
                     <div class="shop-tabs">
@@ -220,21 +340,26 @@
                         <button class="tab-btn" data-tab="board">BOARDS</button>
                     </div>
 
-                    <div class="shop-grid" id="shop-grid">
-                    </div>
+                    <div class="shop-grid" id="shop-grid"></div>
+
                 </div>
             </div>
 
-            <!-- Leaderboard Modal -->
+            <!-- LEADERBOARD MODAL -->
             <div id="leaderboard-modal" class="modal">
+
                 <div class="modal-content glass-panel">
+
                     <div class="modal-header">
                         <h2><i class="fa-solid fa-ranking-star"></i> GLOBAL LEADERBOARD</h2>
-                        <button class="modal-close" id="close-leaderboard"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="modal-close" id="close-leaderboard">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
 
                     <div class="table-wrapper">
                         <table class="leader-table">
+
                             <thead>
                                 <tr>
                                     <th>RANK</th>
@@ -243,42 +368,59 @@
                                     <th>COINS</th>
                                 </tr>
                             </thead>
-                            <tbody id="leaderboard-rows">
-                            </tbody>
+
+                            <tbody id="leaderboard-rows"></tbody>
+
                         </table>
                     </div>
+
                 </div>
             </div>
 
-            <!-- Achievements / Missions Modal -->
+            <!-- ACHIEVEMENTS MODAL -->
             <div id="achievements-modal" class="modal">
+
                 <div class="modal-content glass-panel">
+
                     <div class="modal-header">
                         <h2><i class="fa-solid fa-award"></i> MISSIONS & ACHIEVEMENTS</h2>
-                        <button class="modal-close" id="close-achievements"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="modal-close" id="close-achievements">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
 
-                    <div class="achievements-grid" id="achievements-grid">
-                    </div>
+                    <div class="achievements-grid" id="achievements-grid"></div>
+
                 </div>
             </div>
 
-            <!-- User Login / Profile Modal -->
+            <!-- PROFILE MODAL -->
             <div id="profile-modal" class="modal">
+
                 <div class="modal-content glass-panel modal-sm">
+
                     <div class="modal-header">
                         <h2><i class="fa-solid fa-user-pen"></i> PLAYER PROFILE</h2>
-                        <button class="modal-close" id="close-profile"><i class="fa-solid fa-xmark"></i></button>
+                        <button class="modal-close" id="close-profile">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </div>
+
                     <div class="profile-form">
                         <label for="input-username">ENTER RUNNER USERNAME:</label>
-                        <input type="text" id="input-username" class="custom-input" placeholder="RunnerPro" maxlength="20">
-                        <button class="btn btn-primary btn-full mt-3" id="btn-save-profile">SAVE PROFILE</button>
+
+                        <input type="text" id="input-username" class="custom-input" placeholder="RunnerPro"
+                            maxlength="20">
+
+                        <button class="btn btn-primary btn-full mt-3" id="btn-save-profile">
+                            SAVE PROFILE
+                        </button>
                     </div>
+
                 </div>
             </div>
 
-            <!-- Toast Notification -->
+            <!-- TOAST NOTIFICATION -->
             <div id="toast" class="toast">
                 <i class="fa-solid fa-circle-check toast-icon"></i>
                 <span id="toast-message">Notification</span>
@@ -287,9 +429,12 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- GAME SCRIPTS -->
     <script src="js/sound.js"></script>
     <script src="js/api.js"></script>
+    <script src="js/server-status.js"></script>
     <script src="js/game.js"></script>
+
 </body>
+
 </html>

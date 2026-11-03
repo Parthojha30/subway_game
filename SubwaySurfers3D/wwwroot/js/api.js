@@ -116,6 +116,20 @@ class ApiService {
             return null;
         }
     }
+    async getServerInfo() {
+        try {
+            const res = await fetch(`${this.baseUrl}/api/ServerInfo`, {
+                cache: 'no-store'
+            });
+
+            if (!res.ok) throw new Error('Server info unavailable');
+
+            return await res.json();
+        } catch (err) {
+            console.error('Server Info Error:', err);
+            return null;
+        }
+    }
 }
 
 window.apiService = new ApiService();

@@ -25,7 +25,8 @@
     user-select: none;
 }
 
-body, html {
+body,
+html {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -137,14 +138,19 @@ body, html {
     font-size: 1.4rem;
 }
 
-.gold { color: var(--accent-gold); }
-.trophy { color: var(--accent-cyan); }
+.gold {
+    color: var(--accent-gold);
+}
+
+.trophy {
+    color: var(--accent-cyan);
+}
 
 .profile-btn {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
     padding: 8px 18px;
@@ -227,6 +233,7 @@ body, html {
     line-height: 1;
     background: linear-gradient(135deg, #fff, var(--accent-gold));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 0 20px rgba(255, 165, 2, 0.3);
 }
@@ -397,8 +404,15 @@ kbd {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
 }
 
 /* Powerup Progress Bars HUD */
@@ -438,10 +452,21 @@ kbd {
     transition: width 0.1s linear;
 }
 
-.magnet-fill { background: var(--accent-red); }
-.jetpack-fill { background: var(--accent-gold); }
-.multiplier-fill { background: var(--accent-green); }
-.hoverboard-fill { background: var(--accent-cyan); }
+.magnet-fill {
+    background: var(--accent-red);
+}
+
+.jetpack-fill {
+    background: var(--accent-gold);
+}
+
+.multiplier-fill {
+    background: var(--accent-green);
+}
+
+.hoverboard-fill {
+    background: var(--accent-cyan);
+}
 
 .hoverboard-trigger-btn {
     position: absolute;
@@ -807,33 +832,73 @@ kbd {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes scaleUp {
-    from { opacity: 0; transform: scale(0.88); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes popIn3D {
-    0% { opacity: 0; transform: perspective(800px) rotateX(15deg) scale(0.92) translateY(20px); }
-    100% { opacity: 1; transform: perspective(800px) rotateX(0deg) scale(1) translateY(0); }
+    0% {
+        opacity: 0;
+        transform: perspective(800px) rotateX(15deg) scale(0.92) translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: perspective(800px) rotateX(0deg) scale(1) translateY(0);
+    }
 }
 
 @keyframes floatBob {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-7px); }
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 0 15px rgba(255, 71, 87, 0.4); }
-    50% { box-shadow: 0 0 30px rgba(255, 71, 87, 0.85); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 71, 87, 0.85);
+    }
 }
 
 @keyframes shimmerSweep {
-    0% { transform: translateX(-100%) rotate(25deg); }
-    100% { transform: translateX(200%) rotate(25deg); }
+    0% {
+        transform: translateX(-100%) rotate(25deg);
+    }
+
+    100% {
+        transform: translateX(200%) rotate(25deg);
+    }
 }
 
 /* Enhanced Animated Class Rules */
@@ -879,3 +944,61 @@ kbd {
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
 }
 
+
+/* =========================================
+   LIVE EC2 SERVER STATUS PANEL
+   ========================================= */
+
+.server-status-panel {
+    position: fixed;
+    top: 90px;
+    right: 24px;
+    z-index: 50;
+    width: 245px;
+    padding: 14px 16px;
+    background: rgba(10, 12, 22, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 210, 211, 0.4);
+    border-radius: 14px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+    font-family: var(--font-primary);
+}
+
+.server-status-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.server-live-indicator {
+    color: var(--accent-green);
+    font-size: 0.75rem;
+}
+
+.server-status-name {
+    color: var(--accent-cyan);
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.server-status-detail {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    margin-top: 4px;
+    word-break: break-all;
+}
+
+@media (max-width: 600px) {
+    .server-status-panel {
+        top: 75px;
+        right: 10px;
+        width: 190px;
+        padding: 10px;
+    }
+}
